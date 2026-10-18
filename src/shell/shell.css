@@ -1,0 +1,232 @@
+/* ✦ AFESTRA Shell Styles
+   The branded shell — header, footer, layout, theme system.
+   You don't need to edit this. Use afestra.config.js instead.
+   ─────────────────────────────────────────────────────────── */
+
+/* ── CSS Custom Properties (Theme) ── */
+:root {
+  --accent:        #7C6AFA;
+  --accent-alt:    #A78BFA;
+  --accent-glow:   #7C6AFA33;
+
+  /* Dark theme (default) */
+  --bg:            #0D0D12;
+  --bg-surface:    #13131A;
+  --bg-raised:     #1A1A25;
+  --bg-overlay:    #21212E;
+  --border:        #2A2A3A;
+  --border-soft:   #1E1E2C;
+  --text-primary:  #F0EFFF;
+  --text-secondary:#8B8BA8;
+  --text-muted:    #4A4A65;
+  --shadow:        0 4px 24px rgba(0,0,0,0.5);
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.3);
+  --radius:        14px;
+  --radius-sm:     8px;
+  --radius-lg:     20px;
+  --transition:    200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  --bg:            #F5F4FF;
+  --bg-surface:    #FFFFFF;
+  --bg-raised:     #EEEDF9;
+  --bg-overlay:    #E8E7F5;
+  --border:        #D4D3EE;
+  --border-soft:   #ECEAF8;
+  --text-primary:  #1A1830;
+  --text-secondary:#5A5880;
+  --text-muted:    #9E9CB8;
+  --shadow:        0 4px 24px rgba(100, 90, 200, 0.12);
+  --shadow-sm:     0 2px 8px rgba(100, 90, 200, 0.08);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background var(--transition), color var(--transition);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── AFESTRA Header ── */
+.afestra-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-soft);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.afestra-header__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Brand Group */
+.afestra-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.afestra-logo {
+  width: 26px;
+  height: 26px;
+  color: var(--accent);
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+.afestra-brand__name {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.afestra-brand__app {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+/* Header Actions */
+.afestra-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.afestra-version {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-muted);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.afestra-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.afestra-badge:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* Theme Toggle */
+.afestra-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.afestra-theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.afestra-theme-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Main Content Area ── */
+.afestra-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+/* ── Footer ── */
+.afestra-footer {
+  border-top: 1px solid var(--border-soft);
+  background: var(--bg-surface);
+}
+
+.afestra-footer__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.afestra-footer strong {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .afestra-header__inner { padding: 0 16px; }
+  .afestra-version { display: none; }
+  .afestra-footer__inner { flex-direction: column; gap: 4px; text-align: center; }
+}
